@@ -1,9 +1,9 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 
-export default defineConfig({
-  // ⚠️ Capacitor için zorunlu: tüm path'ler relative olsun
-  base: '',
+export default defineConfig(({ command }) => ({
+  // Cloudflare Pages build'inde absolute path, Capacitor/normal build'de relative path
+  base: process.env.CF_PAGES ? '/' : '',
 
   // ⚠️ Build çıktısını 'dist' klasörüne ver
   // capacitor.config.ts içindeki webDir ile aynı olmalı
@@ -21,4 +21,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, '.'),
     },
   },
-});
+}));
