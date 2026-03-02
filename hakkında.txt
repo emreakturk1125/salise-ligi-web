@@ -1,0 +1,59 @@
+SALİSE LİGİ — Proje Analizi / Hakkında
+
+1) Proje nedir?
+- "Salise Ligi", tarayıcıda çalışan futbol temalı bir simülasyon/mini-oyun web uygulamasıdır.
+- Tek kişilik (Bot) ve 2 kişilik (aynı ekran) oyun modları vardır.
+- MCP (Model Context Protocol) tarafında maç skor/tema vb. kontrolü sağlayan bir "tool server" modülü bulunur.
+
+2) Proje ne ile yapıldı? (Teknoloji yığını)
+- Frontend: TypeScript + Lit (Web Components)
+- Build Tool: Vite
+- MCP: @modelcontextprotocol/sdk + Zod
+
+3) Önemli dosyalar / mimari parçalar
+- Oyun UI ve state: playground.ts
+  - LitElement tabanlı ana UI bileşeni.
+  - Çoklu dil desteği (TR/EN/DE/ES/AR), oyun modları (BOT/LOCAL_2P), maç state'i ve UI state'i burada.
+
+- Uygulama bootstrap ve ses motoru: index.tsx
+  - DOMContentLoaded ile Playground instance'ını root'a takar.
+  - requestAnimationFrame tabanlı "timer engine" ve WebAudio tabanlı ses efektleri burada.
+  - Not: Dosya uzantısı .tsx olsa da React bağımlılığı yok; TSX sadece derleyici ayarı için kullanılıyor.
+
+- MCP server modülü: mcp_maps_server.ts
+  - @modelcontextprotocol/sdk ile "Gemini Soccer Engine" isimli MCP server.
+  - Zod ile input şemaları: skor güncelleme, kart verme, maç dakikası, tema vb. tool'lar.
+
+4) Kullanılan kütüphaneler
+
+- lit
+  - Web Components tabanlı UI framework'ü.
+  - LitElement + html template + decorators (@state/@property) ile UI ve reactivity sağlar.
+
+- zod
+  - Runtime doğrulama ve şema tanımı.
+  - MCP tool parametrelerini doğrulamak için kullanılıyor.
+
+- @modelcontextprotocol/sdk
+  - MCP server oluşturup "tool" tanımlamak için SDK.
+
+- vite (devDependency)
+  - Dev server, build ve preview.
+
+- typescript (devDependency)
+  - TS derleyici / tip kontrol.
+
+5) Build / Çalıştırma
+  1) npm install
+  2) npm run dev        → geliştirme sunucusu
+  3) npm run build      → üretim build'i (dist/ klasörüne çıkar)
+  4) npm run preview    → build çıktısını yerel sunucuda önizle
+
+6) Klasör yapısı kısa özet
+- public/fonts/
+  - Yerel font dosyaları
+- docs/
+  - Dokümantasyon sayfaları
+
+---
+Bu dosya en son 02.03.2026 tarihinde güncellenmiştir.

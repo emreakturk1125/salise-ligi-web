@@ -1,0 +1,59 @@
+SALISE LIGI — Project Analysis / About
+
+1) What is this project?
+- "Salise Ligi" is a football-themed simulation/mini-game web application that runs in the browser.
+- It offers Single Player (Bot) and 2 Players (same screen) game modes.
+- It includes an MCP (Model Context Protocol) "tool server" module for controlling match score, theme, etc.
+
+2) Tech Stack
+- Frontend: TypeScript + Lit (Web Components)
+- Build Tool: Vite
+- MCP: @modelcontextprotocol/sdk + Zod
+
+3) Key Files / Architecture
+- Game UI & state: playground.ts
+  - The main LitElement-based UI component.
+  - Multi-language support (TR/EN/DE/ES/AR), game modes (BOT/LOCAL_2P), match state, and UI state live here.
+
+- App bootstrap & audio engine: index.tsx
+  - Mounts the Playground instance to the DOM on DOMContentLoaded.
+  - Contains the requestAnimationFrame-based timer engine and WebAudio sound effects.
+  - Note: Despite the .tsx extension, there is no React dependency; TSX is used solely for compiler configuration.
+
+- MCP server module: mcp_maps_server.ts
+  - An MCP server named "Gemini Soccer Engine" built with @modelcontextprotocol/sdk.
+  - Zod input schemas for tools: score updates, card events, match time, theme, etc.
+
+4) Libraries Used
+
+- lit
+  - Web Components UI framework.
+  - Provides reactivity via LitElement + html templates + decorators (@state/@property).
+
+- zod
+  - Runtime validation and schema definition.
+  - Used to validate MCP tool parameters.
+
+- @modelcontextprotocol/sdk
+  - SDK for creating MCP servers and defining tools.
+
+- vite (devDependency)
+  - Dev server, build, and preview.
+
+- typescript (devDependency)
+  - TS compiler / type checking.
+
+5) Build / Run
+  1) npm install
+  2) npm run dev        → development server
+  3) npm run build      → production build (outputs to dist/)
+  4) npm run preview    → preview the production build locally
+
+6) Folder Structure Overview
+- public/fonts/
+  - Local font files
+- docs/
+  - Documentation pages
+
+---
+This file was last updated on 02.03.2026.

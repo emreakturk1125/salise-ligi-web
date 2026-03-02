@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salise Ligi - Gizlilik Politikası</title>
+    <meta
+      name="description"
+      content="Salise Ligi gizlilik politikası. Uygulama kişisel veri toplamaz; kamera sadece QR kod okumak için kullanılır."
+    />
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card: #111827;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #22c55e;
+        --border: #1f2937;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: linear-gradient(180deg, #020617 0%, var(--bg) 100%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .card {
+        background: rgba(17, 24, 39, 0.92);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      h1 {
+        margin-top: 0;
+        font-size: clamp(1.4rem, 2.4vw, 2rem);
+      }
+
+      h2 {
+        margin-top: 1.5rem;
+        font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      }
+
+      p,
+      li {
+        color: var(--text);
+        font-size: 0.98rem;
+      }
+
+      ul {
+        padding-left: 1.1rem;
+      }
+
+      .badge {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(34, 197, 94, 0.14);
+        color: #86efac;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      a {
+        color: #93c5fd;
+      }
+
+      footer {
+        margin-top: 1.25rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 14px;
+        }
+
+        .card {
+          padding: 16px;
+          border-radius: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <span class="badge">Salise Ligi - Gizlilik Politikası</span>
+        <h1>Gizlilik Politikası</h1>
+        <p class="muted"><strong>Yürürlük Tarihi:</strong> 27 Şubat 2026</p>
+
+        <p>
+          Salise Ligi olarak kullanıcı gizliliğine önem veriyoruz. Bu uygulama, kişisel veri toplamamak üzere
+          tasarlanmıştır.
+        </p>
+
+        <h2>Toplanan Veriler</h2>
+        <ul>
+          <li>Uygulama kişisel veri toplamaz.</li>
+          <li>Kullanıcı hesabı, kimlik, konum, cihaz içeriği veya benzeri bilgiler saklanmaz.</li>
+        </ul>
+
+        <h2>Kamera İzni Kullanımı</h2>
+        <ul>
+          <li><code>android.permission.CAMERA</code> izni yalnızca QR kod okutma işlevi için kullanılır.</li>
+          <li>Kamera görüntüsü kaydedilmez.</li>
+          <li>Fotoğraf veya video dosyası oluşturulmaz.</li>
+        </ul>
+
+        <h2>Veri Paylaşımı</h2>
+        <ul>
+          <li>Herhangi bir kişisel veri toplanmadığı için üçüncü taraflarla paylaşım yapılmaz.</li>
+          <li>Sunucuya kullanıcı verisi gönderilmez.</li>
+        </ul>
+
+        <h2>İletişim</h2>
+        <p>
+          Gizlilikle ilgili sorularınız için iletişim: <a href="mailto:privacy@saliseligi.example">privacy@saliseligi.example</a>
+        </p>
+
+        <h2>Değişiklikler</h2>
+        <p>
+          Bu politika gerektiğinde güncellenebilir. Güncel sürüm her zaman bu sayfada yayınlanır.
+        </p>
+
+        <hr style="border: 0; border-top: 1px solid var(--border); margin: 1.2rem 0" />
+
+        <h2>Short English Summary</h2>
+        <p class="muted">
+          Salise Ligi does not collect personal data. Camera permission is used only for QR code scanning. No camera
+          recording is stored, and no personal data is shared or sent to a server.
+        </p>
+
+        <footer>
+          © Salise Ligi
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

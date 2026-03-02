@@ -1,0 +1,35 @@
+diff --git a/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerAdSizeEnum.kt b/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerAdSizeEnum.kt
+index 01793ae..e367383 100644
+--- a/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerAdSizeEnum.kt
++++ b/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerAdSizeEnum.kt
+@@ -12,7 +12,8 @@ enum class BannerAdSizeEnum(val size: AdSize) {
+     MEDIUM_RECTANGLE(AdSize.MEDIUM_RECTANGLE),
+     LEADERBOARD(AdSize.LEADERBOARD),
+     ADAPTIVE_BANNER(AdSize.INVALID), // We should not use the AdSize here but calculate the device size
+-    SMART_BANNER(AdSize.SMART_BANNER);
++    // SMART_BANNER is deprecated; handled as adaptive banner in BannerExecutor.
++    SMART_BANNER(AdSize.INVALID);
+ 
+     override fun toString(): String {
+         return name
+diff --git a/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java b/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java
+index c629139..5e1bae3 100644
+--- a/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java
++++ b/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java
+@@ -27,6 +27,7 @@ import com.google.android.gms.ads.AdView;
+ import com.google.android.gms.ads.LoadAdError;
+ import com.google.android.gms.common.util.BiConsumer;
+ 
++@SuppressWarnings("deprecation")
+ public class BannerExecutor extends Executor {
+ 
+     private final JSObject emptyObject = new JSObject();
+@@ -71,7 +72,7 @@ public class BannerExecutor extends Executor {
+         try {
+             mAdView = new AdView(contextSupplier.get());
+ 
+-            if (!adOptions.adSize.toString().equals("ADAPTIVE_BANNER")) {
++            if (!adOptions.adSize.toString().equals("ADAPTIVE_BANNER") && !adOptions.adSize.toString().equals("SMART_BANNER")) {
+                 mAdView.setAdSize(adOptions.adSize.getSize());
+             } else {
+                 // ADAPTIVE BANNER

@@ -1,0 +1,6 @@
+{
+  "name": "Salise Ligi",
+  "description": "An elite AI Football Manager simulation with real-time match control and high-fidelity visuals.",
+  "requestFramePermissions": [],
+  "prompt": "You are an elite Football Manager. Use your tools to control the match scoreboard, give cards, and describe the action to the fans."
+}
