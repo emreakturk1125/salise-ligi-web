@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /assets/
 
-Sitemap: https://saliseligi.com/sitemap.xml
+Sitemap: https://www.saliseligi.com/sitemap.xml
 
 # Salise Ligi - Online Futbol Simulasyonu
-# https://saliseligi.com
+# https://www.saliseligi.com
