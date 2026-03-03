@@ -86,8 +86,177 @@
     <meta name="application-name" content="Salise Ligi" />
 
     <link rel="stylesheet" href="/index.css">
+
+    <!-- ===== Ana Sayfa Header Stili ===== -->
+    <style>
+      .home-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        background: rgba(10, 10, 26, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(34, 34, 68, 0.6);
+      }
+      .home-header .nav-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .home-header .logo-link {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: #fff;
+        text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      .home-header .logo-link img {
+        width: 26px;
+        height: 26px;
+        border-radius: 5px;
+      }
+      /* Desktop nav */
+      .home-header nav {
+        display: flex;
+        gap: 1rem;
+      }
+      .home-header nav a {
+        color: #9999bb;
+        font-size: 0.82rem;
+        font-weight: 500;
+        text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        white-space: nowrap;
+        transition: color 0.2s;
+      }
+      .home-header nav a:hover,
+      .home-header nav a.active {
+        color: #4fc3f7;
+      }
+      /* Hamburger button - mobilde görünür */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        width: 32px;
+        height: 32px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+      .menu-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: #ccc;
+        border-radius: 2px;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+      /* X animasyonu (açıkken) */
+      .menu-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      #root {
+        padding-top: 40px;
+      }
+      #root .playground {
+        height: calc(100vh - 40px) !important;
+        height: calc(100dvh - 40px) !important;
+      }
+      /* ===== Mobil: hamburger menü ===== */
+      @media (max-width: 640px) {
+        .menu-toggle {
+          display: flex;
+        }
+        .home-header nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          background: rgba(10, 10, 26, 0.95);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(34, 34, 68, 0.6);
+          padding: 0.75rem 1.25rem;
+          gap: 0;
+        }
+        .home-header nav.open {
+          display: flex;
+        }
+        .home-header nav a {
+          display: block;
+          padding: 0.6rem 0;
+          font-size: 0.9rem;
+          border-bottom: 1px solid rgba(34, 34, 68, 0.3);
+        }
+        .home-header nav a:last-child {
+          border-bottom: none;
+        }
+        .home-header .logo-link { font-size: 0.85rem; }
+        .home-header .logo-link img { width: 22px; height: 22px; }
+        #root { padding-top: 38px; }
+        #root .playground {
+          height: calc(100vh - 38px) !important;
+          height: calc(100dvh - 38px) !important;
+        }
+      }
+    </style>
   </head>
   <body>
+    <!-- ===== Header Nav ===== -->
+    <header class="home-header" id="homeHeader">
+      <div class="nav-inner">
+        <a href="/" class="logo-link">
+          <img src="/logo-v2-cropped.png" alt="Salise Ligi" width="26" height="26" />
+          Salise Ligi
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="mainNav">
+          <a href="/" class="active">Ana Sayfa</a>
+          <a href="/how-to-play/">Nasıl Oynanır</a>
+          <a href="/privacy/">Gizlilik</a>
+          <a href="/contact/">İletişim</a>
+        </nav>
+      </div>
+    </header>
+    <script>
+      (function(){
+        var btn=document.getElementById('menuToggle');
+        var nav=document.getElementById('mainNav');
+        btn.addEventListener('click',function(){
+          btn.classList.toggle('open');
+          nav.classList.toggle('open');
+        });
+        // Menü linkine tıklayınca kapat
+        nav.querySelectorAll('a').forEach(function(a){
+          a.addEventListener('click',function(){
+            btn.classList.remove('open');
+            nav.classList.remove('open');
+          });
+        });
+      })();
+    </script>
     <!-- ===== SEO: Noscript fallback (arama motorları için görünür içerik) ===== -->
     <noscript>
       <h1>Salise Ligi — Online Futbol Simülasyonu</h1>

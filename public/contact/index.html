@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>İletişim | Salise Ligi</title>
+  <meta name="description" content="Salise Ligi ile iletişime geçin. Soru, öneri veya geri bildirimleriniz için bize e-posta gönderin." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.saliseligi.com/contact/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Salise Ligi" />
+  <meta property="og:title" content="İletişim | Salise Ligi" />
+  <meta property="og:description" content="Salise Ligi ile iletişime geçin. Soru, öneri veya geri bildirimleriniz için bize yazın." />
+  <meta property="og:image" content="https://www.saliseligi.com/logo-v2-cropped.png" />
+  <meta property="og:url" content="https://www.saliseligi.com/contact/" />
+  <meta property="og:locale" content="tr_TR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="İletişim | Salise Ligi" />
+  <meta name="twitter:description" content="Salise Ligi ile iletişime geçin." />
+  <meta name="twitter:image" content="https://www.saliseligi.com/logo-v2-cropped.png" />
+
+  <link rel="icon" type="image/png" href="/logo-v2-cropped.png" />
+  <link rel="stylesheet" href="/content-pages.css" />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="https://www.saliseligi.com/" class="logo-link">
+        <img src="/logo-v2-cropped.png" alt="Salise Ligi Logo" width="32" height="32" />
+        Salise Ligi
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="mainNav">
+        <a href="https://www.saliseligi.com/">Ana Sayfa</a>
+        <a href="/how-to-play/">Nasıl Oynanır</a>
+        <a href="/privacy/">Gizlilik</a>
+        <a href="/contact/" class="active">İletişim</a>
+      </nav>
+    </div>
+  </header>
+  <script>
+    (function(){var b=document.getElementById('menuToggle'),n=document.getElementById('mainNav');b.addEventListener('click',function(){b.classList.toggle('open');n.classList.toggle('open');});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('open');n.classList.remove('open');});});})();
+  </script>
+
+  <!-- ===== Content ===== -->
+  <main class="content-main">
+    <h1>İletişim</h1>
+    <p class="intro">
+      Salise Ligi hakkında sorularınız, önerileriniz veya geri bildirimleriniz mi var? 
+      Aşağıdaki yollardan bize ulaşabilirsiniz.
+    </p>
+
+    <h2>E-posta</h2>
+    <p>
+      Bize doğrudan e-posta gönderebilirsiniz:
+    </p>
+    <p>
+      <a href="mailto:akturkstudio@gmail.com" style="font-size:1.15rem;font-weight:600;">
+        akturkstudio@gmail.com
+      </a>
+    </p>
+
+    <h2>İletişim Formu</h2>
+    <p>Aşağıdaki formu doldurarak da mesajınızı iletebilirsiniz. "Gönder" butonuna bastığınızda e-posta uygulamanız açılacaktır.</p>
+
+    <form class="contact-form" id="contactForm" onsubmit="return false;">
+      <div>
+        <label for="contactName">Adınız</label>
+        <input type="text" id="contactName" name="name" placeholder="Adınızı yazın" required />
+      </div>
+      <div>
+        <label for="contactEmail">E-posta Adresiniz</label>
+        <input type="email" id="contactEmail" name="email" placeholder="ornek@mail.com" required />
+      </div>
+      <div>
+        <label for="contactMessage">Mesajınız</label>
+        <textarea id="contactMessage" name="message" placeholder="Mesajınızı buraya yazın..." required></textarea>
+      </div>
+      <button type="button" class="submit-btn" onclick="sendMail()">&#9993; Gönder</button>
+    </form>
+
+    <script>
+      function sendMail() {
+        var name = document.getElementById('contactName').value.trim();
+        var email = document.getElementById('contactEmail').value.trim();
+        var message = document.getElementById('contactMessage').value.trim();
+        if (!name || !email || !message) {
+          alert('Lütfen tüm alanları doldurun.');
+          return;
+        }
+        var subject = encodeURIComponent('Salise Ligi İletişim - ' + name);
+        var body = encodeURIComponent(
+          'Gönderen: ' + name + '\nE-posta: ' + email + '\n\n' + message
+        );
+        window.location.href = 'mailto:akturkstudio@gmail.com?subject=' + subject + '&body=' + body;
+      }
+    </script>
+
+    <h2>Sosyal Medya</h2>
+    <p>Yakında sosyal medya hesaplarımız da aktif olacaktır. Takipte kalın!</p>
+    <ul>
+      <li><strong>Google Play:</strong> <a href="https://play.google.com/store/apps/details?id=com.emreakturk.saliseligi" target="_blank" rel="noopener">Salise Ligi — Google Play</a></li>
+    </ul>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Salise Ligi. Tüm hakları saklıdır. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>
