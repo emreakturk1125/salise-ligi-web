@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
@@ -217,6 +217,7 @@
       #root .playground {
         height: calc(100vh - 40px) !important;
         height: calc(100dvh - 40px) !important;
+        min-height: 0 !important;
       }
       /* ===== Mobil: hamburger menü ===== */
       @media (max-width: 640px) {
@@ -255,6 +256,7 @@
         #root .playground {
           height: calc(100vh - 38px) !important;
           height: calc(100dvh - 38px) !important;
+          min-height: 0 !important;
         }
       }
     </style>
@@ -271,10 +273,10 @@
           <span></span><span></span><span></span>
         </button>
         <nav id="mainNav">
-          <a href="/" class="active">Ana Sayfa</a>
-          <a href="/how-to-play/">Nasıl Oynanır</a>
-          <a href="/privacy/">Gizlilik</a>
-          <a href="/contact/">İletişim</a>
+          <a href="/" class="active" data-nav="home">Home</a>
+          <a href="/how-to-play/" data-nav="howToPlay">How to Play</a>
+          <a href="/privacy/" data-nav="privacy">Privacy</a>
+          <a href="/contact/" data-nav="contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -292,6 +294,35 @@
             btn.classList.remove('open');
             nav.classList.remove('open');
           });
+        });
+
+        // Navigasyon menüsünü dil değişikliğine göre güncelle
+        var NAV_TRANSLATIONS = {
+          tr: { home: 'Ana Sayfa', howToPlay: 'Nasıl Oynanır', privacy: 'Gizlilik', contact: 'İletişim' },
+          en: { home: 'Home', howToPlay: 'How to Play', privacy: 'Privacy', contact: 'Contact' },
+          de: { home: 'Startseite', howToPlay: 'Spielanleitung', privacy: 'Datenschutz', contact: 'Kontakt' },
+          es: { home: 'Inicio', howToPlay: 'Cómo jugar', privacy: 'Privacidad', contact: 'Contacto' },
+          ar: { home: 'الرئيسية', howToPlay: 'طريقة اللعب', privacy: 'الخصوصية', contact: 'اتصل بنا' }
+        };
+        function updateNavLang(lang) {
+          var t = NAV_TRANSLATIONS[lang] || NAV_TRANSLATIONS['en'];
+          var links = nav.querySelectorAll('a[data-nav]');
+          links.forEach(function(a) {
+            var key = a.getAttribute('data-nav');
+            if (key === 'home') a.textContent = t.home;
+            else if (key === 'howToPlay') a.textContent = t.howToPlay;
+            else if (key === 'privacy') a.textContent = t.privacy;
+            else if (key === 'contact') a.textContent = t.contact;
+          });
+        }
+        // Sayfa yüklendiğinde localStorage'dan dili oku
+        var savedLang = null;
+        try { savedLang = localStorage.getItem('saliseligi-lang'); } catch(e) {}
+        if (savedLang) updateNavLang(savedLang);
+
+        // Playground'dan gelen dil değişikliği event'ini dinle
+        window.addEventListener('saliseligi-lang-change', function(e) {
+          updateNavLang(e.detail.lang);
         });
       })();
     </script>

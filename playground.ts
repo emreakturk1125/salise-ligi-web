@@ -208,7 +208,11 @@ const TRANSLATIONS = {
     connectFailedHint: "host IP/port yanlış olabilir.",
     portInUse: "Bu port kullanımda. Lütfen farklı port deneyin veya uygulamayı kapatıp açın.",
     hostStartFailedDetail: "Host başlatılamadı.",
-    detailPrefix: "Detay:"
+    detailPrefix: "Detay:",
+    navHome: "Ana Sayfa",
+    navHowToPlay: "Nasıl Oynanır",
+    navPrivacy: "Gizlilik",
+    navContact: "İletişim"
   },
   en: {
     title: "SALİSE LİGİ",
@@ -402,7 +406,11 @@ const TRANSLATIONS = {
     connectFailedHint: "host IP/port may be incorrect.",
     portInUse: "This port is in use. Try a different port or restart the app.",
     hostStartFailedDetail: "Failed to start host.",
-    detailPrefix: "Details:"
+    detailPrefix: "Details:",
+    navHome: "Home",
+    navHowToPlay: "How to Play",
+    navPrivacy: "Privacy",
+    navContact: "Contact"
   },
   de: {
     title: "SALİSE LİGİ",
@@ -595,7 +603,11 @@ const TRANSLATIONS = {
     connectFailedHint: "Host-IP/Port könnte falsch sein.",
     portInUse: "Dieser Port wird bereits verwendet. Versuche einen anderen Port oder starte die App neu.",
     hostStartFailedDetail: "Host-Start fehlgeschlagen.",
-    detailPrefix: "Details:"
+    detailPrefix: "Details:",
+    navHome: "Startseite",
+    navHowToPlay: "Spielanleitung",
+    navPrivacy: "Datenschutz",
+    navContact: "Kontakt"
   },
   es: {
     title: "SALİSE LİGİ",
@@ -788,7 +800,11 @@ const TRANSLATIONS = {
     connectFailedHint: "la IP/puerto del host podría ser incorrecta.",
     portInUse: "Este puerto está en uso. Prueba otro puerto o reinicia la app.",
     hostStartFailedDetail: "No se pudo iniciar el host.",
-    detailPrefix: "Detalles:"
+    detailPrefix: "Detalles:",
+    navHome: "Inicio",
+    navHowToPlay: "Cómo jugar",
+    navPrivacy: "Privacidad",
+    navContact: "Contacto"
   },
   ar: {
     title: "SALİSE LİGİ",
@@ -981,12 +997,16 @@ const TRANSLATIONS = {
     connectFailedHint: "قد يكون IP/منفذ المضيف غير صحيح.",
     portInUse: "هذا المنفذ مستخدم. جرّب منفذاً آخر أو أعد تشغيل التطبيق.",
     hostStartFailedDetail: "فشل بدء المضيف.",
-    detailPrefix: "التفاصيل:"
+    detailPrefix: "التفاصيل:",
+    navHome: "الرئيسية",
+    navHowToPlay: "طريقة اللعب",
+    navPrivacy: "الخصوصية",
+    navContact: "اتصل بنا"
   }
 };
 
 type AppLanguage = 'tr' | 'en' | 'de' | 'es' | 'ar';
-const BASE_LANG: AppLanguage = 'tr';
+const BASE_LANG: AppLanguage = 'en';
 
 /** Safe translation accessor — falls back to BASE_LANG if key/language missing */
 function getT(lang: AppLanguage): typeof TRANSLATIONS['tr'] {
@@ -1036,7 +1056,7 @@ export let isBallMoving = false;
 
 @customElement('gdm-playground')
 export class Playground extends LitElement {
-  @property({ type: String }) language: AppLanguage = 'tr';
+  @property({ type: String }) language: AppLanguage = 'en';
 
   @state() isWelcomeVisible = true;
   @state() isSummaryVisible = false;
@@ -1277,7 +1297,7 @@ export class Playground extends LitElement {
   @state() tempAwayTeamName = "";
   @state() tempMatchDuration = 0.5;
   @state() tempBallIndex = 0;
-  @state() tempLanguage: AppLanguage = 'tr';
+  @state() tempLanguage: AppLanguage = 'en';
   @state() wasPlayingBeforeModal = false;
 
   private _nonBotAwayTeamName: string | null = null;
@@ -1333,8 +1353,20 @@ export class Playground extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
+
+    // Kaydedilmiş dili yükle
+    try {
+      const savedLang = localStorage.getItem('saliseligi-lang') as AppLanguage | null;
+      if (savedLang && ['tr', 'en', 'de', 'es', 'ar'].includes(savedLang)) {
+        this.language = savedLang;
+      }
+    } catch {}
+
     this.lastEvent = getT(this.language).ready;
     this._updateDefaultTeamNames();
+
+    // Dili header'a bildir
+    this._dispatchLanguageChange();
 
     // Game mode persistence (v2) + migration from older values
     try {
@@ -2218,6 +2250,7 @@ private async _hideBannerNow(token?: number) {
         if (!this.isPlaying && this.lastDigit === null) {
              this.lastEvent = getT(this.language).ready;
         }
+        this._dispatchLanguageChange();
     }
 
     this.isSettingsOpen = false;
@@ -2371,6 +2404,14 @@ private async _hideBannerNow(token?: number) {
     requestAnimationFrame(() => {
       this.isLanguageSelectOpen = true;
     });
+  }
+
+  _dispatchLanguageChange() {
+    const t = getT(this.language);
+    try { localStorage.setItem('saliseligi-lang', this.language); } catch {}
+    window.dispatchEvent(new CustomEvent('saliseligi-lang-change', {
+      detail: { lang: this.language, navHome: t.navHome, navHowToPlay: t.navHowToPlay, navPrivacy: t.navPrivacy, navContact: t.navContact }
+    }));
   }
 
   _closeLanguageSelect() {
@@ -6639,10 +6680,12 @@ private async _hideBannerNow(token?: number) {
     const t = getT(this.language);
     const _pickLang = (lang: AppLanguage) => {
       if (!this.isMuted && this.onButtonClick) this.onButtonClick();
+      const changed = this.language !== lang;
       this.language = lang;
       this._updateDefaultTeamNames();
       this._enforceAwayTeamNameRules();
       this.lastEvent = getT(this.language).ready;
+      if (changed) this._dispatchLanguageChange();
       this._closeLanguageSelect();
     };
     return html`

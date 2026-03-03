@@ -1,27 +1,27 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Gizlilik Politikası | Salise Ligi</title>
-  <meta name="description" content="Salise Ligi gizlilik politikası. Kişisel veri toplama, çerez kullanımı, reklam (AdSense/AdMob) ve iletişim bilgileri." />
+  <title>Privacy Policy | Salise Ligi</title>
+  <meta name="description" content="Salise Ligi privacy policy. Personal data collection, cookie usage, advertising (AdSense/AdMob) and contact information." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.saliseligi.com/privacy/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Salise Ligi" />
-  <meta property="og:title" content="Gizlilik Politikası | Salise Ligi" />
-  <meta property="og:description" content="Salise Ligi gizlilik politikası. Veri toplama, çerez ve reklam hakkında bilgiler." />
+  <meta property="og:title" content="Privacy Policy | Salise Ligi" />
+  <meta property="og:description" content="Salise Ligi privacy policy. Data collection, cookies and advertising information." />
   <meta property="og:image" content="https://www.saliseligi.com/logo-v2-cropped.png" />
   <meta property="og:url" content="https://www.saliseligi.com/privacy/" />
-  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Gizlilik Politikası | Salise Ligi" />
-  <meta name="twitter:description" content="Salise Ligi gizlilik politikası." />
+  <meta name="twitter:title" content="Privacy Policy | Salise Ligi" />
+  <meta name="twitter:description" content="Salise Ligi privacy policy." />
   <meta name="twitter:image" content="https://www.saliseligi.com/logo-v2-cropped.png" />
 
   <link rel="icon" type="image/png" href="/logo-v2-cropped.png" />
@@ -36,108 +36,250 @@
         <img src="/logo-v2-cropped.png" alt="Salise Ligi Logo" width="32" height="32" />
         Salise Ligi
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
       <nav id="mainNav">
-        <a href="https://www.saliseligi.com/">Ana Sayfa</a>
-        <a href="/how-to-play/">Nasıl Oynanır</a>
-        <a href="/privacy/" class="active">Gizlilik</a>
-        <a href="/contact/">İletişim</a>
+        <a href="https://www.saliseligi.com/" data-nav="home">Home</a>
+        <a href="/how-to-play/" data-nav="howToPlay">How to Play</a>
+        <a href="/privacy/" class="active" data-nav="privacy">Privacy</a>
+        <a href="/contact/" data-nav="contact">Contact</a>
       </nav>
     </div>
   </header>
   <script>
-    (function(){var b=document.getElementById('menuToggle'),n=document.getElementById('mainNav');b.addEventListener('click',function(){b.classList.toggle('open');n.classList.toggle('open');});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('open');n.classList.remove('open');});});})();
+    (function(){var b=document.getElementById('menuToggle'),n=document.getElementById('mainNav');b.addEventListener('click',function(){b.classList.toggle('open');n.classList.toggle('open');});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('open');n.classList.remove('open');});});
+    var NT={tr:{home:'Ana Sayfa',howToPlay:'Nasıl Oynanır',privacy:'Gizlilik',contact:'İletişim'},en:{home:'Home',howToPlay:'How to Play',privacy:'Privacy',contact:'Contact'},de:{home:'Startseite',howToPlay:'Spielanleitung',privacy:'Datenschutz',contact:'Kontakt'},es:{home:'Inicio',howToPlay:'Cómo jugar',privacy:'Privacidad',contact:'Contacto'},ar:{home:'الرئيسية',howToPlay:'طريقة اللعب',privacy:'الخصوصية',contact:'اتصل بنا'}};
+    try{var l=localStorage.getItem('saliseligi-lang');if(l&&NT[l]){var t=NT[l];n.querySelectorAll('a[data-nav]').forEach(function(a){var k=a.getAttribute('data-nav');if(k==='home')a.textContent=t.home;else if(k==='howToPlay')a.textContent=t.howToPlay;else if(k==='privacy')a.textContent=t.privacy;else if(k==='contact')a.textContent=t.contact;});}}catch(e){}
+    })();
   </script>
 
   <!-- ===== Content ===== -->
-  <main class="content-main">
-    <h1>Gizlilik Politikası</h1>
-    <p class="intro">
-      Bu sayfa, <strong>Salise Ligi</strong> web uygulaması ve mobil uygulamasının kullanıcı verilerine 
-      yaklaşımını açıklamaktadır. Uygulamayı kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız.
+  <main class="content-main" id="pageContent">
+    <h1 id="t-title">Privacy Policy</h1>
+    <p class="intro" id="t-intro">
+      This page explains how the <strong>Salise Ligi</strong> web application and mobile app approach user data. 
+      By using the application, you agree to the following terms.
     </p>
 
-    <h2>1. Hesap ve Giriş (Login)</h2>
-    <p>
-      Salise Ligi herhangi bir kullanıcı hesabı, giriş (login) veya kayıt sistemi <strong>içermez</strong>. 
-      Ad, e-posta adresi, şifre gibi kimlik bilgileri toplanmaz veya saklanmaz.
+    <h2 id="t-h1">1. Account & Login</h2>
+    <p id="t-p1">
+      Salise Ligi does <strong>not</strong> include any user account, login or registration system. 
+      No identity information such as name, email address, or password is collected or stored.
     </p>
 
-    <h2>2. Toplanan Veriler</h2>
-    <p>
-      Uygulama doğrudan kişisel veri toplamaz. Ancak aşağıdaki üçüncü taraf hizmetleri dolaylı olarak 
-      bazı anonim verileri işleyebilir:
+    <h2 id="t-h2">2. Data Collected</h2>
+    <p id="t-p2">
+      The application does not directly collect personal data. However, the following third-party services 
+      may process some anonymous data indirectly:
     </p>
-    <ul>
-      <li><strong>Google AdSense (Web):</strong> Web sürümünde reklam gösterimi için Google AdSense kullanılabilir. 
-        AdSense, ilgi alanına dayalı reklamlar sunmak amacıyla çerezler ve benzer teknolojiler kullanabilir.</li>
-      <li><strong>Google AdMob (Mobil):</strong> Android uygulamasında reklam gösterimi için AdMob kullanılabilir. 
-        AdMob, cihazın reklam kimliğini (Advertising ID) ve anonim kullanım verilerini işleyebilir.</li>
-      <li><strong>Temel Analitik:</strong> Uygulama performansını izlemek amacıyla temel analitik verileri 
-        (sayfa görüntüleme, hata raporları gibi) anonim olarak toplanabilir.</li>
+    <ul id="t-ul2">
+      <li><strong>Google AdSense (Web):</strong> Google AdSense may be used for ad display in the web version. 
+        AdSense may use cookies and similar technologies to serve interest-based ads.</li>
+      <li><strong>Google AdMob (Mobile):</strong> AdMob may be used for ad display in the Android app. 
+        AdMob may process the device's advertising ID and anonymous usage data.</li>
+      <li><strong>Basic Analytics:</strong> Basic analytics data (page views, error reports, etc.) 
+        may be collected anonymously to monitor app performance.</li>
     </ul>
 
-    <h2>3. Çerezler (Cookies)</h2>
-    <p>
-      Salise Ligi kendisi çerez oluşturmaz. Ancak üçüncü taraf reklam ve analitik sağlayıcıları 
-      (Google AdSense, Google Analytics vb.) kendi çerezlerini yerleştirebilir. Bu çerezler şu amaçlarla kullanılır:
+    <h2 id="t-h3">3. Cookies</h2>
+    <p id="t-p3">
+      Salise Ligi does not create cookies itself. However, third-party advertising and analytics providers 
+      (Google AdSense, Google Analytics, etc.) may place their own cookies. These cookies are used for:
     </p>
-    <ul>
-      <li>Kişiselleştirilmiş reklam sunumu</li>
-      <li>Reklam performansı ölçümü</li>
-      <li>Anonim kullanım istatistikleri</li>
+    <ul id="t-ul3">
+      <li>Personalized ad delivery</li>
+      <li>Ad performance measurement</li>
+      <li>Anonymous usage statistics</li>
     </ul>
-    <p>
-      Tarayıcı ayarlarınızdan çerezleri yönetebilir veya devre dışı bırakabilirsiniz. 
-      Google'ın reklam çerez tercihleri için: 
-      <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Reklam Ayarları</a>.
+    <p id="t-p3b">
+      You can manage or disable cookies from your browser settings. 
+      For Google's ad cookie preferences: 
+      <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ad Settings</a>.
     </p>
 
-    <h2>4. Veri Paylaşımı ve Satışı</h2>
-    <p>
-      Kullanıcı verileri <strong>üçüncü taraflara satılmaz, kiralanmaz veya ticari amaçla paylaşılmaz</strong>. 
-      Veriler yalnızca reklam ve analitik hizmetleri kapsamında, ilgili sağlayıcıların gizlilik politikalarına 
-      uygun şekilde işlenir.
+    <h2 id="t-h4">4. Data Sharing & Sale</h2>
+    <p id="t-p4">
+      User data is <strong>not sold, rented, or shared commercially with third parties</strong>. 
+      Data is processed only within the scope of advertising and analytics services, in accordance 
+      with the respective providers' privacy policies.
     </p>
 
-    <h2>5. Çocukların Gizliliği</h2>
-    <p>
-      Salise Ligi, 13 yaş altı çocuklardan bilerek kişisel bilgi toplamaz. Ebeveynler veya 
-      veliler, bir çocuğun kişisel bilgi sağladığını düşünüyorsa bizimle iletişime geçebilir.
+    <h2 id="t-h5">5. Children's Privacy</h2>
+    <p id="t-p5">
+      Salise Ligi does not knowingly collect personal information from children under 13. If parents or 
+      guardians believe a child has provided personal information, they may contact us.
     </p>
 
-    <h2>6. Üçüncü Taraf Bağlantıları</h2>
-    <p>
-      Uygulama, Google Play Store ve diğer dış sitelere bağlantılar içerebilir. Bu sitelerin 
-      gizlilik uygulamalarından Salise Ligi sorumlu değildir; ilgili sitelerin kendi gizlilik 
-      politikalarını incelemenizi öneririz.
+    <h2 id="t-h6">6. Third-Party Links</h2>
+    <p id="t-p6">
+      The application may contain links to Google Play Store and other external sites. Salise Ligi 
+      is not responsible for the privacy practices of these sites; we recommend reviewing their own 
+      privacy policies.
     </p>
 
-    <h2>7. Değişiklikler</h2>
-    <p>
-      Bu gizlilik politikası zaman zaman güncellenebilir. Önemli değişikliklerde bu sayfa 
-      üzerinden bilgilendirme yapılacaktır. Güncel sürümü düzenli olarak kontrol etmenizi öneririz.
+    <h2 id="t-h7">7. Changes</h2>
+    <p id="t-p7">
+      This privacy policy may be updated from time to time. Significant changes will be communicated 
+      through this page. We recommend checking the current version regularly.
     </p>
 
-    <h2>8. İletişim</h2>
-    <p>
-      Gizlilik politikasıyla ilgili sorularınız için bize ulaşabilirsiniz:
+    <h2 id="t-h8">8. Contact</h2>
+    <p id="t-p8">
+      For questions about the privacy policy, you can reach us:
     </p>
     <p>
-      <strong>E-posta:</strong> <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a>
+      <strong>Email:</strong> <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a>
     </p>
 
-    <div class="tip-box">
-      <strong>Son güncelleme:</strong> 2026-03-03
+    <div class="tip-box" id="t-updated">
+      <strong>Last updated:</strong> 2026-03-03
     </div>
   </main>
 
   <!-- ===== Footer ===== -->
-  <footer class="site-footer">
-    <p>&copy; 2026 Salise Ligi. Tüm hakları saklıdır. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>
+  <footer class="site-footer" id="t-footer">
+    <p>&copy; 2026 Salise Ligi. All rights reserved. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>
   </footer>
+
+  <script>
+  (function(){
+    var LANG = 'en';
+    try { var s = localStorage.getItem('saliseligi-lang'); if(s) LANG = s; } catch(e){}
+    if (LANG === 'en') return;
+
+    var T = {
+      tr: {
+        title: 'Gizlilik Politikası',
+        intro: 'Bu sayfa, <strong>Salise Ligi</strong> web uygulaması ve mobil uygulamasının kullanıcı verilerine yaklaşımını açıklamaktadır. Uygulamayı kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız.',
+        h1: '1. Hesap ve Giriş (Login)',
+        p1: 'Salise Ligi herhangi bir kullanıcı hesabı, giriş (login) veya kayıt sistemi <strong>içermez</strong>. Ad, e-posta adresi, şifre gibi kimlik bilgileri toplanmaz veya saklanmaz.',
+        h2: '2. Toplanan Veriler',
+        p2: 'Uygulama doğrudan kişisel veri toplamaz. Ancak aşağıdaki üçüncü taraf hizmetleri dolaylı olarak bazı anonim verileri işleyebilir:',
+        ul2: '<li><strong>Google AdSense (Web):</strong> Web sürümünde reklam gösterimi için Google AdSense kullanılabilir. AdSense, ilgi alanına dayalı reklamlar sunmak amacıyla çerezler ve benzer teknolojiler kullanabilir.</li><li><strong>Google AdMob (Mobil):</strong> Android uygulamasında reklam gösterimi için AdMob kullanılabilir. AdMob, cihazın reklam kimliğini (Advertising ID) ve anonim kullanım verilerini işleyebilir.</li><li><strong>Temel Analitik:</strong> Uygulama performansını izlemek amacıyla temel analitik verileri (sayfa görüntüleme, hata raporları gibi) anonim olarak toplanabilir.</li>',
+        h3: '3. Çerezler (Cookies)',
+        p3: 'Salise Ligi kendisi çerez oluşturmaz. Ancak üçüncü taraf reklam ve analitik sağlayıcıları (Google AdSense, Google Analytics vb.) kendi çerezlerini yerleştirebilir. Bu çerezler şu amaçlarla kullanılır:',
+        ul3: '<li>Kişiselleştirilmiş reklam sunumu</li><li>Reklam performansı ölçümü</li><li>Anonim kullanım istatistikleri</li>',
+        p3b: 'Tarayıcı ayarlarınızdan çerezleri yönetebilir veya devre dışı bırakabilirsiniz. Google\'ın reklam çerez tercihleri için: <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Reklam Ayarları</a>.',
+        h4: '4. Veri Paylaşımı ve Satışı',
+        p4: 'Kullanıcı verileri <strong>üçüncü taraflara satılmaz, kiralanmaz veya ticari amaçla paylaşılmaz</strong>. Veriler yalnızca reklam ve analitik hizmetleri kapsamında, ilgili sağlayıcıların gizlilik politikalarına uygun şekilde işlenir.',
+        h5: '5. Çocukların Gizliliği',
+        p5: 'Salise Ligi, 13 yaş altı çocuklardan bilerek kişisel bilgi toplamaz. Ebeveynler veya veliler, bir çocuğun kişisel bilgi sağladığını düşünüyorsa bizimle iletişime geçebilir.',
+        h6: '6. Üçüncü Taraf Bağlantıları',
+        p6: 'Uygulama, Google Play Store ve diğer dış sitelere bağlantılar içerebilir. Bu sitelerin gizlilik uygulamalarından Salise Ligi sorumlu değildir; ilgili sitelerin kendi gizlilik politikalarını incelemenizi öneririz.',
+        h7: '7. Değişiklikler',
+        p7: 'Bu gizlilik politikası zaman zaman güncellenebilir. Önemli değişikliklerde bu sayfa üzerinden bilgilendirme yapılacaktır. Güncel sürümü düzenli olarak kontrol etmenizi öneririz.',
+        h8: '8. İletişim',
+        p8: 'Gizlilik politikasıyla ilgili sorularınız için bize ulaşabilirsiniz:',
+        updated: '<strong>Son güncelleme:</strong> 2026-03-03',
+        footer: '<p>&copy; 2026 Salise Ligi. Tüm hakları saklıdır. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>'
+      },
+      de: {
+        title: 'Datenschutzrichtlinie',
+        intro: 'Diese Seite erläutert, wie die <strong>Salise Ligi</strong> Webanwendung und mobile App mit Nutzerdaten umgehen. Durch die Nutzung der Anwendung stimmen Sie den folgenden Bedingungen zu.',
+        h1: '1. Konto & Anmeldung',
+        p1: 'Salise Ligi <strong>enthält kein</strong> Benutzerkonto-, Anmelde- oder Registrierungssystem. Es werden keine Identitätsdaten wie Name, E-Mail-Adresse oder Passwort erhoben oder gespeichert.',
+        h2: '2. Erhobene Daten',
+        p2: 'Die Anwendung erhebt keine personenbezogenen Daten direkt. Die folgenden Drittanbieterdienste können jedoch indirekt einige anonyme Daten verarbeiten:',
+        ul2: '<li><strong>Google AdSense (Web):</strong> Für die Anzeigenschaltung in der Webversion kann Google AdSense verwendet werden. AdSense kann Cookies und ähnliche Technologien verwenden, um interessenbezogene Werbung zu schalten.</li><li><strong>Google AdMob (Mobil):</strong> Für die Anzeigenschaltung in der Android-App kann AdMob verwendet werden. AdMob kann die Werbe-ID des Geräts und anonyme Nutzungsdaten verarbeiten.</li><li><strong>Grundlegende Analytik:</strong> Grundlegende Analysedaten (Seitenaufrufe, Fehlerberichte usw.) können anonym erhoben werden, um die App-Leistung zu überwachen.</li>',
+        h3: '3. Cookies',
+        p3: 'Salise Ligi erstellt selbst keine Cookies. Drittanbieter für Werbung und Analytik (Google AdSense, Google Analytics usw.) können jedoch eigene Cookies setzen. Diese Cookies werden verwendet für:',
+        ul3: '<li>Personalisierte Werbung</li><li>Messung der Werbeleistung</li><li>Anonyme Nutzungsstatistiken</li>',
+        p3b: 'Sie können Cookies über Ihre Browsereinstellungen verwalten oder deaktivieren. Für Googles Werbe-Cookie-Einstellungen: <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Anzeigeneinstellungen</a>.',
+        h4: '4. Datenweitergabe & Verkauf',
+        p4: 'Nutzerdaten werden <strong>nicht an Dritte verkauft, vermietet oder kommerziell weitergegeben</strong>. Daten werden nur im Rahmen von Werbe- und Analysediensten gemäß den Datenschutzrichtlinien der jeweiligen Anbieter verarbeitet.',
+        h5: '5. Datenschutz für Kinder',
+        p5: 'Salise Ligi erhebt wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren. Wenn Eltern oder Erziehungsberechtigte glauben, dass ein Kind persönliche Informationen bereitgestellt hat, können sie uns kontaktieren.',
+        h6: '6. Links zu Dritten',
+        p6: 'Die Anwendung kann Links zum Google Play Store und anderen externen Websites enthalten. Salise Ligi ist nicht für die Datenschutzpraktiken dieser Websites verantwortlich; wir empfehlen, deren eigene Datenschutzrichtlinien zu prüfen.',
+        h7: '7. Änderungen',
+        p7: 'Diese Datenschutzrichtlinie kann von Zeit zu Zeit aktualisiert werden. Wesentliche Änderungen werden über diese Seite kommuniziert. Wir empfehlen, die aktuelle Version regelmäßig zu überprüfen.',
+        h8: '8. Kontakt',
+        p8: 'Bei Fragen zur Datenschutzrichtlinie erreichen Sie uns unter:',
+        updated: '<strong>Letzte Aktualisierung:</strong> 2026-03-03',
+        footer: '<p>&copy; 2026 Salise Ligi. Alle Rechte vorbehalten. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>'
+      },
+      es: {
+        title: 'Política de Privacidad',
+        intro: 'Esta página explica cómo la aplicación web y la app móvil de <strong>Salise Ligi</strong> manejan los datos de los usuarios. Al utilizar la aplicación, aceptas los siguientes términos.',
+        h1: '1. Cuenta e Inicio de Sesión',
+        p1: 'Salise Ligi <strong>no incluye</strong> ningún sistema de cuenta de usuario, inicio de sesión o registro. No se recopila ni almacena información de identidad como nombre, correo electrónico o contraseña.',
+        h2: '2. Datos Recopilados',
+        p2: 'La aplicación no recopila datos personales directamente. Sin embargo, los siguientes servicios de terceros pueden procesar algunos datos anónimos indirectamente:',
+        ul2: '<li><strong>Google AdSense (Web):</strong> Google AdSense puede utilizarse para mostrar anuncios en la versión web. AdSense puede usar cookies y tecnologías similares para servir anuncios basados en intereses.</li><li><strong>Google AdMob (Móvil):</strong> AdMob puede utilizarse para mostrar anuncios en la app Android. AdMob puede procesar el ID de publicidad del dispositivo y datos de uso anónimos.</li><li><strong>Analítica básica:</strong> Se pueden recopilar datos analíticos básicos (vistas de página, informes de errores, etc.) de forma anónima para monitorear el rendimiento de la app.</li>',
+        h3: '3. Cookies',
+        p3: 'Salise Ligi no crea cookies por sí mismo. Sin embargo, proveedores de publicidad y analítica de terceros (Google AdSense, Google Analytics, etc.) pueden colocar sus propias cookies. Estas cookies se utilizan para:',
+        ul3: '<li>Entrega de anuncios personalizados</li><li>Medición del rendimiento publicitario</li><li>Estadísticas de uso anónimas</li>',
+        p3b: 'Puedes gestionar o desactivar las cookies desde la configuración de tu navegador. Para las preferencias de cookies publicitarias de Google: <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Configuración de anuncios de Google</a>.',
+        h4: '4. Compartir y Venta de Datos',
+        p4: 'Los datos del usuario <strong>no se venden, alquilan ni comparten comercialmente con terceros</strong>. Los datos se procesan únicamente en el ámbito de los servicios de publicidad y analítica, de acuerdo con las políticas de privacidad de los respectivos proveedores.',
+        h5: '5. Privacidad de los Niños',
+        p5: 'Salise Ligi no recopila conscientemente información personal de menores de 13 años. Si los padres o tutores creen que un niño ha proporcionado información personal, pueden contactarnos.',
+        h6: '6. Enlaces de Terceros',
+        p6: 'La aplicación puede contener enlaces a Google Play Store y otros sitios externos. Salise Ligi no es responsable de las prácticas de privacidad de estos sitios; recomendamos revisar sus propias políticas de privacidad.',
+        h7: '7. Cambios',
+        p7: 'Esta política de privacidad puede actualizarse periódicamente. Los cambios significativos se comunicarán a través de esta página. Recomendamos consultar la versión actual regularmente.',
+        h8: '8. Contacto',
+        p8: 'Para preguntas sobre la política de privacidad, puedes contactarnos:',
+        updated: '<strong>Última actualización:</strong> 2026-03-03',
+        footer: '<p>&copy; 2026 Salise Ligi. Todos los derechos reservados. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>'
+      },
+      ar: {
+        title: 'سياسة الخصوصية',
+        intro: 'تشرح هذه الصفحة كيف يتعامل تطبيق <strong>ساليسه ليجي</strong> على الويب والجوال مع بيانات المستخدمين. باستخدام التطبيق، فإنك توافق على الشروط التالية.',
+        h1: '1. الحساب وتسجيل الدخول',
+        p1: 'ساليسه ليجي <strong>لا يتضمن</strong> أي نظام حساب مستخدم أو تسجيل دخول أو تسجيل. لا يتم جمع أو تخزين أي معلومات هوية مثل الاسم أو البريد الإلكتروني أو كلمة المرور.',
+        h2: '2. البيانات المجمعة',
+        p2: 'لا يجمع التطبيق بيانات شخصية مباشرة. ومع ذلك، قد تعالج خدمات الطرف الثالث التالية بعض البيانات المجهولة بشكل غير مباشر:',
+        ul2: '<li><strong>Google AdSense (ويب):</strong> قد يُستخدم Google AdSense لعرض الإعلانات في نسخة الويب. قد يستخدم AdSense ملفات تعريف الارتباط وتقنيات مشابهة لتقديم إعلانات مبنية على الاهتمامات.</li><li><strong>Google AdMob (جوال):</strong> قد يُستخدم AdMob لعرض الإعلانات في تطبيق Android. قد يعالج AdMob معرّف الإعلان للجهاز وبيانات الاستخدام المجهولة.</li><li><strong>تحليلات أساسية:</strong> قد تُجمع بيانات تحليلية أساسية (مشاهدات الصفحة، تقارير الأخطاء، إلخ) بشكل مجهول لمراقبة أداء التطبيق.</li>',
+        h3: '3. ملفات تعريف الارتباط (Cookies)',
+        p3: 'ساليسه ليجي لا ينشئ ملفات تعريف ارتباط بنفسه. ومع ذلك، قد يضع مزودو الإعلانات والتحليلات من طرف ثالث (Google AdSense، Google Analytics، إلخ) ملفاتهم الخاصة. تُستخدم هذه الملفات لـ:',
+        ul3: '<li>تقديم إعلانات مخصصة</li><li>قياس أداء الإعلانات</li><li>إحصائيات استخدام مجهولة</li>',
+        p3b: 'يمكنك إدارة أو تعطيل ملفات تعريف الارتباط من إعدادات متصفحك. لتفضيلات ملفات تعريف الارتباط الإعلانية من Google: <a href="https://adssettings.google.com/" target="_blank" rel="noopener">إعدادات إعلانات Google</a>.',
+        h4: '4. مشاركة البيانات وبيعها',
+        p4: '<strong>لا تُباع بيانات المستخدم أو تُؤجر أو تُشارك تجاريًا مع أطراف ثالثة</strong>. تُعالج البيانات فقط في نطاق خدمات الإعلان والتحليلات، وفقًا لسياسات الخصوصية الخاصة بالمزودين المعنيين.',
+        h5: '5. خصوصية الأطفال',
+        p5: 'ساليسه ليجي لا يجمع عن عمد معلومات شخصية من الأطفال دون سن 13 عامًا. إذا اعتقد الآباء أو الأوصياء أن طفلاً قدم معلومات شخصية، يمكنهم التواصل معنا.',
+        h6: '6. روابط الطرف الثالث',
+        p6: 'قد يحتوي التطبيق على روابط لمتجر Google Play ومواقع خارجية أخرى. ساليسه ليجي غير مسؤول عن ممارسات الخصوصية لهذه المواقع؛ ننصح بمراجعة سياسات الخصوصية الخاصة بها.',
+        h7: '7. التغييرات',
+        p7: 'قد يتم تحديث سياسة الخصوصية هذه من وقت لآخر. سيتم الإبلاغ عن التغييرات المهمة عبر هذه الصفحة. ننصح بالتحقق من النسخة الحالية بانتظام.',
+        h8: '8. التواصل',
+        p8: 'لأسئلة حول سياسة الخصوصية، يمكنك التواصل معنا:',
+        updated: '<strong>آخر تحديث:</strong> 2026-03-03',
+        footer: '<p>&copy; 2026 Salise Ligi. جميع الحقوق محفوظة. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>'
+      }
+    };
+
+    var t = T[LANG];
+    if (!t) return;
+    var $ = function(id){ return document.getElementById(id); };
+    $('t-title').textContent = t.title;
+    $('t-intro').innerHTML = t.intro;
+    $('t-h1').textContent = t.h1;
+    $('t-p1').innerHTML = t.p1;
+    $('t-h2').textContent = t.h2;
+    $('t-p2').textContent = t.p2;
+    $('t-ul2').innerHTML = t.ul2;
+    $('t-h3').textContent = t.h3;
+    $('t-p3').textContent = t.p3;
+    $('t-ul3').innerHTML = t.ul3;
+    $('t-p3b').innerHTML = t.p3b;
+    $('t-h4').textContent = t.h4;
+    $('t-p4').innerHTML = t.p4;
+    $('t-h5').textContent = t.h5;
+    $('t-p5').textContent = t.p5;
+    $('t-h6').textContent = t.h6;
+    $('t-p6').textContent = t.p6;
+    $('t-h7').textContent = t.h7;
+    $('t-p7').textContent = t.p7;
+    $('t-h8').textContent = t.h8;
+    $('t-p8').textContent = t.p8;
+    $('t-updated').innerHTML = t.updated;
+    $('t-footer').innerHTML = t.footer;
+    if (LANG === 'ar') document.documentElement.setAttribute('dir', 'rtl');
+  })();
+  </script>
 
 </body>
 </html>

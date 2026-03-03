@@ -1,27 +1,27 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>İletişim | Salise Ligi</title>
-  <meta name="description" content="Salise Ligi ile iletişime geçin. Soru, öneri veya geri bildirimleriniz için bize e-posta gönderin." />
+  <title>Contact | Salise Ligi</title>
+  <meta name="description" content="Contact Salise Ligi. Send us an email for questions, suggestions or feedback." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.saliseligi.com/contact/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Salise Ligi" />
-  <meta property="og:title" content="İletişim | Salise Ligi" />
-  <meta property="og:description" content="Salise Ligi ile iletişime geçin. Soru, öneri veya geri bildirimleriniz için bize yazın." />
+  <meta property="og:title" content="Contact | Salise Ligi" />
+  <meta property="og:description" content="Contact Salise Ligi. Send us a message for questions, suggestions or feedback." />
   <meta property="og:image" content="https://www.saliseligi.com/logo-v2-cropped.png" />
   <meta property="og:url" content="https://www.saliseligi.com/contact/" />
-  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="İletişim | Salise Ligi" />
-  <meta name="twitter:description" content="Salise Ligi ile iletişime geçin." />
+  <meta name="twitter:title" content="Contact | Salise Ligi" />
+  <meta name="twitter:description" content="Contact Salise Ligi." />
   <meta name="twitter:image" content="https://www.saliseligi.com/logo-v2-cropped.png" />
 
   <link rel="icon" type="image/png" href="/logo-v2-cropped.png" />
@@ -36,32 +36,35 @@
         <img src="/logo-v2-cropped.png" alt="Salise Ligi Logo" width="32" height="32" />
         Salise Ligi
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
       <nav id="mainNav">
-        <a href="https://www.saliseligi.com/">Ana Sayfa</a>
-        <a href="/how-to-play/">Nasıl Oynanır</a>
-        <a href="/privacy/">Gizlilik</a>
-        <a href="/contact/" class="active">İletişim</a>
+        <a href="https://www.saliseligi.com/" data-nav="home">Home</a>
+        <a href="/how-to-play/" data-nav="howToPlay">How to Play</a>
+        <a href="/privacy/" data-nav="privacy">Privacy</a>
+        <a href="/contact/" class="active" data-nav="contact">Contact</a>
       </nav>
     </div>
   </header>
   <script>
-    (function(){var b=document.getElementById('menuToggle'),n=document.getElementById('mainNav');b.addEventListener('click',function(){b.classList.toggle('open');n.classList.toggle('open');});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('open');n.classList.remove('open');});});})();
+    (function(){var b=document.getElementById('menuToggle'),n=document.getElementById('mainNav');b.addEventListener('click',function(){b.classList.toggle('open');n.classList.toggle('open');});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('open');n.classList.remove('open');});});
+    var NT={tr:{home:'Ana Sayfa',howToPlay:'Nasıl Oynanır',privacy:'Gizlilik',contact:'İletişim'},en:{home:'Home',howToPlay:'How to Play',privacy:'Privacy',contact:'Contact'},de:{home:'Startseite',howToPlay:'Spielanleitung',privacy:'Datenschutz',contact:'Kontakt'},es:{home:'Inicio',howToPlay:'Cómo jugar',privacy:'Privacidad',contact:'Contacto'},ar:{home:'الرئيسية',howToPlay:'طريقة اللعب',privacy:'الخصوصية',contact:'اتصل بنا'}};
+    try{var l=localStorage.getItem('saliseligi-lang');if(l&&NT[l]){var t=NT[l];n.querySelectorAll('a[data-nav]').forEach(function(a){var k=a.getAttribute('data-nav');if(k==='home')a.textContent=t.home;else if(k==='howToPlay')a.textContent=t.howToPlay;else if(k==='privacy')a.textContent=t.privacy;else if(k==='contact')a.textContent=t.contact;});}}catch(e){}
+    })();
   </script>
 
   <!-- ===== Content ===== -->
-  <main class="content-main">
-    <h1>İletişim</h1>
-    <p class="intro">
-      Salise Ligi hakkında sorularınız, önerileriniz veya geri bildirimleriniz mi var? 
-      Aşağıdaki yollardan bize ulaşabilirsiniz.
+  <main class="content-main" id="pageContent">
+    <h1 id="t-title">Contact</h1>
+    <p class="intro" id="t-intro">
+      Have questions, suggestions or feedback about Salise Ligi? 
+      You can reach us through the following channels.
     </p>
 
-    <h2>E-posta</h2>
-    <p>
-      Bize doğrudan e-posta gönderebilirsiniz:
+    <h2 id="t-email-h">Email</h2>
+    <p id="t-email-p">
+      You can send us an email directly:
     </p>
     <p>
       <a href="mailto:akturkstudio@gmail.com" style="font-size:1.15rem;font-weight:600;">
@@ -69,23 +72,23 @@
       </a>
     </p>
 
-    <h2>İletişim Formu</h2>
-    <p>Aşağıdaki formu doldurarak da mesajınızı iletebilirsiniz. "Gönder" butonuna bastığınızda e-posta uygulamanız açılacaktır.</p>
+    <h2 id="t-form-h">Contact Form</h2>
+    <p id="t-form-p">You can also send your message by filling out the form below. When you press "Send", your email app will open.</p>
 
     <form class="contact-form" id="contactForm" onsubmit="return false;">
       <div>
-        <label for="contactName">Adınız</label>
-        <input type="text" id="contactName" name="name" placeholder="Adınızı yazın" required />
+        <label for="contactName" id="t-label-name">Your Name</label>
+        <input type="text" id="contactName" name="name" placeholder="Enter your name" required />
       </div>
       <div>
-        <label for="contactEmail">E-posta Adresiniz</label>
-        <input type="email" id="contactEmail" name="email" placeholder="ornek@mail.com" required />
+        <label for="contactEmail" id="t-label-email">Your Email Address</label>
+        <input type="email" id="contactEmail" name="email" placeholder="example@mail.com" required />
       </div>
       <div>
-        <label for="contactMessage">Mesajınız</label>
-        <textarea id="contactMessage" name="message" placeholder="Mesajınızı buraya yazın..." required></textarea>
+        <label for="contactMessage" id="t-label-msg">Your Message</label>
+        <textarea id="contactMessage" name="message" placeholder="Write your message here..." required></textarea>
       </div>
-      <button type="button" class="submit-btn" onclick="sendMail()">&#9993; Gönder</button>
+      <button type="button" class="submit-btn" id="t-submit" onclick="sendMail()">&#9993; Send</button>
     </form>
 
     <script>
@@ -94,28 +97,135 @@
         var email = document.getElementById('contactEmail').value.trim();
         var message = document.getElementById('contactMessage').value.trim();
         if (!name || !email || !message) {
-          alert('Lütfen tüm alanları doldurun.');
+          var lang = 'en';
+          try { lang = localStorage.getItem('saliseligi-lang') || 'en'; } catch(e){}
+          var msgs = {tr:'Lütfen tüm alanları doldurun.',en:'Please fill in all fields.',de:'Bitte alle Felder ausfüllen.',es:'Por favor, completa todos los campos.',ar:'يرجى ملء جميع الحقول.'};
+          alert(msgs[lang] || msgs['en']);
           return;
         }
-        var subject = encodeURIComponent('Salise Ligi İletişim - ' + name);
+        var subject = encodeURIComponent('Salise Ligi Contact - ' + name);
         var body = encodeURIComponent(
-          'Gönderen: ' + name + '\nE-posta: ' + email + '\n\n' + message
+          'From: ' + name + '\nEmail: ' + email + '\n\n' + message
         );
         window.location.href = 'mailto:akturkstudio@gmail.com?subject=' + subject + '&body=' + body;
       }
     </script>
 
-    <h2>Sosyal Medya</h2>
-    <p>Yakında sosyal medya hesaplarımız da aktif olacaktır. Takipte kalın!</p>
+    <h2 id="t-social-h">Social Media</h2>
+    <p id="t-social-p">Our social media accounts will be active soon. Stay tuned!</p>
     <ul>
       <li><strong>Google Play:</strong> <a href="https://play.google.com/store/apps/details?id=com.emreakturk.saliseligi" target="_blank" rel="noopener">Salise Ligi — Google Play</a></li>
     </ul>
   </main>
 
   <!-- ===== Footer ===== -->
-  <footer class="site-footer">
-    <p>&copy; 2026 Salise Ligi. Tüm hakları saklıdır. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>
+  <footer class="site-footer" id="t-footer">
+    <p>&copy; 2026 Salise Ligi. All rights reserved. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>
   </footer>
+
+  <script>
+  (function(){
+    var LANG = 'en';
+    try { var s = localStorage.getItem('saliseligi-lang'); if(s) LANG = s; } catch(e){}
+    if (LANG === 'en') return;
+
+    var T = {
+      tr: {
+        title: 'İletişim',
+        intro: 'Salise Ligi hakkında sorularınız, önerileriniz veya geri bildirimleriniz mi var? Aşağıdaki yollardan bize ulaşabilirsiniz.',
+        emailH: 'E-posta',
+        emailP: 'Bize doğrudan e-posta gönderebilirsiniz:',
+        formH: 'İletişim Formu',
+        formP: 'Aşağıdaki formu doldurarak da mesajınızı iletebilirsiniz. "Gönder" butonuna bastığınızda e-posta uygulamanız açılacaktır.',
+        labelName: 'Adınız',
+        labelEmail: 'E-posta Adresiniz',
+        labelMsg: 'Mesajınız',
+        phName: 'Adınızı yazın',
+        phEmail: 'ornek@mail.com',
+        phMsg: 'Mesajınızı buraya yazın...',
+        submit: '&#9993; Gönder',
+        socialH: 'Sosyal Medya',
+        socialP: 'Yakında sosyal medya hesaplarımız da aktif olacaktır. Takipte kalın!',
+        footer: '<p>&copy; 2026 Salise Ligi. Tüm hakları saklıdır. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>'
+      },
+      de: {
+        title: 'Kontakt',
+        intro: 'Haben Sie Fragen, Vorschläge oder Feedback zu Salise Ligi? Sie können uns über die folgenden Kanäle erreichen.',
+        emailH: 'E-Mail',
+        emailP: 'Sie können uns direkt eine E-Mail senden:',
+        formH: 'Kontaktformular',
+        formP: 'Sie können Ihre Nachricht auch über das untenstehende Formular senden. Wenn Sie auf „Senden" klicken, öffnet sich Ihre E-Mail-App.',
+        labelName: 'Ihr Name',
+        labelEmail: 'Ihre E-Mail-Adresse',
+        labelMsg: 'Ihre Nachricht',
+        phName: 'Ihren Namen eingeben',
+        phEmail: 'beispiel@mail.com',
+        phMsg: 'Schreiben Sie Ihre Nachricht hier...',
+        submit: '&#9993; Senden',
+        socialH: 'Soziale Medien',
+        socialP: 'Unsere Social-Media-Konten werden bald aktiv sein. Bleiben Sie dran!',
+        footer: '<p>&copy; 2026 Salise Ligi. Alle Rechte vorbehalten. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>'
+      },
+      es: {
+        title: 'Contacto',
+        intro: '¿Tienes preguntas, sugerencias o comentarios sobre Salise Ligi? Puedes contactarnos a través de los siguientes canales.',
+        emailH: 'Correo electrónico',
+        emailP: 'Puedes enviarnos un correo electrónico directamente:',
+        formH: 'Formulario de Contacto',
+        formP: 'También puedes enviar tu mensaje rellenando el formulario de abajo. Al pulsar "Enviar", se abrirá tu aplicación de correo.',
+        labelName: 'Tu Nombre',
+        labelEmail: 'Tu Correo Electrónico',
+        labelMsg: 'Tu Mensaje',
+        phName: 'Escribe tu nombre',
+        phEmail: 'ejemplo@mail.com',
+        phMsg: 'Escribe tu mensaje aquí...',
+        submit: '&#9993; Enviar',
+        socialH: 'Redes Sociales',
+        socialP: 'Nuestras cuentas de redes sociales estarán activas pronto. ¡Mantente atento!',
+        footer: '<p>&copy; 2026 Salise Ligi. Todos los derechos reservados. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>'
+      },
+      ar: {
+        title: 'اتصل بنا',
+        intro: 'هل لديك أسئلة أو اقتراحات أو ملاحظات حول ساليسه ليجي؟ يمكنك التواصل معنا عبر القنوات التالية.',
+        emailH: 'البريد الإلكتروني',
+        emailP: 'يمكنك إرسال بريد إلكتروني لنا مباشرة:',
+        formH: 'نموذج الاتصال',
+        formP: 'يمكنك أيضًا إرسال رسالتك عبر ملء النموذج أدناه. عند الضغط على "إرسال"، سيفتح تطبيق البريد الإلكتروني.',
+        labelName: 'اسمك',
+        labelEmail: 'بريدك الإلكتروني',
+        labelMsg: 'رسالتك',
+        phName: 'أدخل اسمك',
+        phEmail: 'example@mail.com',
+        phMsg: 'اكتب رسالتك هنا...',
+        submit: '&#9993; إرسال',
+        socialH: 'وسائل التواصل الاجتماعي',
+        socialP: 'حساباتنا على وسائل التواصل الاجتماعي ستكون نشطة قريبًا. ابقَ على اطلاع!',
+        footer: '<p>&copy; 2026 Salise Ligi. جميع الحقوق محفوظة. &mdash; <a href="mailto:akturkstudio@gmail.com">akturkstudio@gmail.com</a></p>'
+      }
+    };
+
+    var t = T[LANG];
+    if (!t) return;
+    var $ = function(id){ return document.getElementById(id); };
+    $('t-title').textContent = t.title;
+    $('t-intro').textContent = t.intro;
+    $('t-email-h').textContent = t.emailH;
+    $('t-email-p').textContent = t.emailP;
+    $('t-form-h').textContent = t.formH;
+    $('t-form-p').textContent = t.formP;
+    $('t-label-name').textContent = t.labelName;
+    $('t-label-email').textContent = t.labelEmail;
+    $('t-label-msg').textContent = t.labelMsg;
+    $('contactName').placeholder = t.phName;
+    $('contactEmail').placeholder = t.phEmail;
+    $('contactMessage').placeholder = t.phMsg;
+    $('t-submit').innerHTML = t.submit;
+    $('t-social-h').textContent = t.socialH;
+    $('t-social-p').textContent = t.socialP;
+    $('t-footer').innerHTML = t.footer;
+    if (LANG === 'ar') document.documentElement.setAttribute('dir', 'rtl');
+  })();
+  </script>
 
 </body>
 </html>
