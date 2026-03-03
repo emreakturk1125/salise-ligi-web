@@ -37,8 +37,13 @@
     <meta name="twitter:image:alt" content="Salise Ligi — Futbol Simülasyonu" />
 
     <!-- ===== Favicon & App Icons ===== -->
-    <link rel="icon" type="image/png" href="/logo-v2-cropped.png" />
-    <link rel="apple-touch-icon" href="/logo-v2-cropped.png" />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- ===== Structured Data: JSON-LD (WebApplication + Game) ===== -->
     <script type="application/ld+json">
@@ -71,6 +76,39 @@
         "ratingCount": "1",
         "bestRating": "5",
         "worstRating": "1"
+      }
+    }
+    </script>
+
+    <!-- ===== Structured Data: Organization (Google Arama Logosu) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Salise Ligi",
+      "url": "https://www.saliseligi.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.saliseligi.com/favicon-512x512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://www.saliseligi.com/logo-v2-cropped.png",
+      "sameAs": []
+    }
+    </script>
+
+    <!-- ===== Structured Data: WebSite (Arama Kutusu) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Salise Ligi",
+      "url": "https://www.saliseligi.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.saliseligi.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
     }
     </script>
@@ -125,7 +163,7 @@
       }
       /* Desktop nav */
       .home-header nav {
-        display: flex;
+        display: flex !important;
         gap: 1rem;
       }
       .home-header nav a {
@@ -142,8 +180,8 @@
         color: #4fc3f7;
       }
       /* Hamburger button - mobilde görünür */
-      .menu-toggle {
-        display: none;
+      .home-header .menu-toggle {
+        display: none !important;
         background: none;
         border: none;
         cursor: pointer;
@@ -182,11 +220,11 @@
       }
       /* ===== Mobil: hamburger menü ===== */
       @media (max-width: 640px) {
-        .menu-toggle {
-          display: flex;
+        .home-header .menu-toggle {
+          display: flex !important;
         }
         .home-header nav {
-          display: none;
+          display: none !important;
           position: absolute;
           top: 100%;
           left: 0;
@@ -200,7 +238,7 @@
           gap: 0;
         }
         .home-header nav.open {
-          display: flex;
+          display: flex !important;
         }
         .home-header nav a {
           display: block;
