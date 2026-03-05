@@ -1,6 +1,7 @@
 
 import { Playground, isBallMoving } from './playground';
 import { adsService } from './ads-service.js';
+import { Walkthrough } from './walkthrough';
 
 // Event Translations for Logic Layer
 const EVENTS: Record<string, Record<string, string>> = {
@@ -126,6 +127,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Cast playground to any to access the custom 'language' property without strict TS errors in this context
   const playground = new Playground() as any; 
   rootElement.appendChild(playground as unknown as Node);
+
+  // Walkthrough: ilk açılışta 3 adımlı rehber göster
+  const walkthrough = new Walkthrough({ gameRootSelector: '#root' });
+  if (walkthrough.shouldShow()) walkthrough.show();
 
   let isMuted = false;
   
