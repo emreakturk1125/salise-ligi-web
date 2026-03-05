@@ -18,7 +18,7 @@ import { isLanMessage, type LanInputAckMessage, type LanInputMessage, type LanMe
 const TRANSLATIONS = {
   tr: {
     title: "SALİSE LİGİ",
-    subtitle: "PROFESYONEL FUTBOL SİMÜLASYONU",
+    subtitle: "TEK DOKUNUŞ REFLEKS FUTBOL",
     startGame: "MAÇA BAŞLA",
     attack: "HÜCUM",
     ready: "Maça Hazır Mısınız?",
@@ -216,7 +216,7 @@ const TRANSLATIONS = {
   },
   en: {
     title: "SALİSE LİGİ",
-    subtitle: "PROFESSIONAL FOOTBALL SIMULATION",
+    subtitle: "ONE-TAP REFLEX FOOTBALL",
     startGame: "KICK OFF",
     attack: "ATTACK",
     ready: "Are You Ready?",
@@ -414,7 +414,7 @@ const TRANSLATIONS = {
   },
   de: {
     title: "SALİSE LİGİ",
-    subtitle: "PROFESSIONELLE FUSSBALL-SIMULATION",
+    subtitle: "EIN-TIPP REFLEX-FUSSBALL",
     startGame: "ANPFIFF",
     attack: "ANGRIFF",
     ready: "Bereit fürs Spiel?",
@@ -611,7 +611,7 @@ const TRANSLATIONS = {
   },
   es: {
     title: "SALİSE LİGİ",
-    subtitle: "SIMULACIÓN DE FÚTBOL PROFESIONAL",
+    subtitle: "FÚTBOL REFLEJO DE UN TOQUE",
     startGame: "INICIO",
     attack: "ATAQUE",
     ready: "¿Listo para el partido?",
@@ -808,7 +808,7 @@ const TRANSLATIONS = {
   },
   ar: {
     title: "SALİSE LİGİ",
-    subtitle: "محاكاة كرة قدم احترافية",
+    subtitle: "كرة قدم بلمسة واحدة",
     startGame: "ابدأ المباراة",
     attack: "هجوم",
     ready: "هل أنت مستعد؟",
