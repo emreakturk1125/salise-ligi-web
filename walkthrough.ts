@@ -16,9 +16,9 @@ interface Step {
 }
 
 const STEPS: Step[] = [
-  { icon: '👆', title: '1/3', description: 'Tap: The ball starts spinning.' },
-  { icon: '✋', title: '2/3', description: 'Tap again: The ball stops.' },
-  { icon: '🏆', title: '3/3', description: 'Stop at the right moment: Score and break records!' },
+  { icon: '👆', title: '1/3', description: 'Dokun: Top dönmeye başlar.' },
+  { icon: '✋', title: '2/3', description: 'Tekrar dokun: Top durur.' },
+  { icon: '🏆', title: '3/3', description: 'Doğru anda durdur: Skor yap ve rekor kır!' },
 ];
 
 const STYLE = /* css */ `
@@ -226,15 +226,15 @@ export class Walkthrough {
         <div class="wt-desc">${s.description}</div>
         <div class="wt-dots">${dots}</div>
         <div class="wt-actions">
-          ${!isFirst ? '<button class="wt-btn" data-wt="prev">◀ Back</button>' : ''}
-          <button class="wt-btn" data-wt="skip">Skip</button>
+          ${!isFirst ? '<button class="wt-btn" data-wt="prev">◀ Geri</button>' : ''}
+          <button class="wt-btn" data-wt="skip">Atla</button>
           ${isLast
-            ? '<button class="wt-btn wt-primary" data-wt="finish">Finish ✓</button>'
-            : '<button class="wt-btn wt-primary" data-wt="next">Next ▶</button>'}
+            ? '<button class="wt-btn wt-primary" data-wt="finish">Bitir ✓</button>'
+            : '<button class="wt-btn wt-primary" data-wt="next">İleri ▶</button>'}
         </div>
         <div class="wt-check-row">
           <input type="checkbox" id="wt-no-show" ${this.dontShowAgain ? 'checked' : ''} />
-          <label for="wt-no-show">Don't show again</label>
+          <label for="wt-no-show">Bir daha gösterme</label>
         </div>
       </div>`;
 

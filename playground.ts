@@ -1006,7 +1006,7 @@ const TRANSLATIONS = {
 };
 
 type AppLanguage = 'tr' | 'en' | 'de' | 'es' | 'ar';
-const BASE_LANG: AppLanguage = 'en';
+const BASE_LANG: AppLanguage = 'tr';
 
 /** Safe translation accessor — falls back to BASE_LANG if key/language missing */
 function getT(lang: AppLanguage): typeof TRANSLATIONS['tr'] {
@@ -1056,7 +1056,7 @@ export let isBallMoving = false;
 
 @customElement('gdm-playground')
 export class Playground extends LitElement {
-  @property({ type: String }) language: AppLanguage = 'en';
+  @property({ type: String }) language: AppLanguage = 'tr';
 
   @state() isWelcomeVisible = true;
   @state() isSummaryVisible = false;
@@ -1297,7 +1297,7 @@ export class Playground extends LitElement {
   @state() tempAwayTeamName = "";
   @state() tempMatchDuration = 0.5;
   @state() tempBallIndex = 0;
-  @state() tempLanguage: AppLanguage = 'en';
+  @state() tempLanguage: AppLanguage = 'tr';
   @state() wasPlayingBeforeModal = false;
 
   private _nonBotAwayTeamName: string | null = null;

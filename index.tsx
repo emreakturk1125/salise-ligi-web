@@ -582,7 +582,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   const getEventText = (key: string, params: {[key: string]: string | number} = {}) => {
-    const lang = playground.language || 'en';
+    const lang = playground.language || 'tr';
     const texts = EVENTS[lang] ?? EVENTS['en'];
     let text = texts[key] ?? EVENTS['en'][key] ?? key;
     for (const p in params) {
