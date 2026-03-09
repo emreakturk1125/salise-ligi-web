@@ -29,100 +29,178 @@ const STYLE = /* css */ `
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: linear-gradient(160deg, rgba(6, 12, 18, 0.92) 0%, rgba(12, 24, 32, 0.88) 100%);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
   opacity: 0;
-  transition: opacity .3s ease;
-  padding: 16px;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 20px;
 }
 .wt-overlay.wt-visible { opacity: 1; }
 
 .wt-card {
-  background: linear-gradient(145deg, rgba(18,61,36,.95), rgba(10,46,26,.98));
-  border: 1px solid rgba(0,212,255,.25);
-  border-radius: clamp(16px, 4vw, 28px);
-  box-shadow: 0 0 40px rgba(0,212,255,.12), 0 8px 32px rgba(0,0,0,.5);
-  width: min(420px, 92vw);
+  background: linear-gradient(165deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.06) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 1px 0 rgba(255, 255, 255, 0.08);
+  width: min(440px, 94vw);
   max-height: 90vh;
-  overflow-y: auto;
-  padding: clamp(24px, 5vw, 40px) clamp(20px, 4vw, 32px);
+  overflow: hidden;
+  padding: 0;
   text-align: center;
-  color: #fff;
-  font-family: 'Roboto Condensed', sans-serif;
-  animation: wt-pop .35s cubic-bezier(.34,1.56,.64,1) both;
+  color: #e8edf2;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  animation: wt-pop 0.5s cubic-bezier(0.34, 1.2, 0.64, 1) both;
 }
 @keyframes wt-pop {
-  from { transform: scale(.85) translateY(20px); opacity: 0; }
-  to   { transform: scale(1)   translateY(0);    opacity: 1; }
+  from { transform: scale(0.92) translateY(24px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
 }
 
-.wt-icon {
-  font-size: clamp(48px, 12vw, 72px);
-  margin-bottom: 12px;
-  line-height: 1;
+.wt-card-inner {
+  padding: clamp(28px, 6vw, 44px) clamp(24px, 5vw, 36px);
 }
+
+.wt-icon-wrap {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 40px;
+  line-height: 1;
+  animation: wt-icon-in 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) 0.15s both;
+}
+@keyframes wt-icon-in {
+  from { transform: scale(0.6); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
 .wt-step-label {
-  font-size: clamp(.75rem, 2.4vw, .9rem);
-  color: rgba(0,212,255,.8);
-  letter-spacing: 1.6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(100, 200, 255, 0.9);
+  letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  animation: wt-fade-up 0.35s ease both;
 }
 .wt-desc {
-  font-size: clamp(1rem, 3.6vw, 1.3rem);
-  line-height: 1.5;
+  font-size: clamp(1rem, 3.2vw, 1.2rem);
+  line-height: 1.55;
+  color: rgba(232, 237, 242, 0.92);
+  margin-bottom: 28px;
+  font-weight: 450;
+  animation: wt-fade-up 0.35s ease 0.05s both;
+}
+@keyframes wt-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* progress bar + dots */
+.wt-progress-wrap {
   margin-bottom: 24px;
 }
-
-/* dots */
-.wt-dots { display:flex; justify-content:center; gap:8px; margin-bottom:20px; }
-.wt-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: rgba(255,255,255,.25);
-  transition: background .25s, transform .25s;
+.wt-progress-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 14px;
 }
-.wt-dot.wt-active { background: #00d4ff; transform: scale(1.3); }
-
-/* buttons row */
-.wt-actions {
+.wt-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #5eb8f0, #7dd3fc);
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.wt-dots {
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+.wt-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.wt-dot.wt-active {
+  background: linear-gradient(135deg, #5eb8f0, #7dd3fc);
+  transform: scale(1.35);
+  box-shadow: 0 0 12px rgba(94, 184, 240, 0.5);
+}
+
+/* buttons */
+.wt-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
   flex-wrap: wrap;
 }
 .wt-btn {
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: clamp(.82rem, 2.8vw, 1rem);
-  padding: clamp(8px, 2vw, 12px) clamp(16px, 4vw, 24px);
-  border-radius: clamp(8px, 2vw, 14px);
-  border: 1px solid rgba(255,255,255,.2);
-  background: rgba(255,255,255,.07);
-  color: #fff;
+  font-family: inherit;
+  font-size: clamp(0.875rem, 2.6vw, 1rem);
+  font-weight: 500;
+  padding: 12px 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.95);
   cursor: pointer;
-  transition: background .2s, border-color .2s, transform .1s;
-  min-height: 40px;
+  transition: all 0.2s ease;
+  min-height: 44px;
   line-height: 1.2;
 }
-.wt-btn:active { transform: scale(.96); }
-.wt-btn:hover  { background: rgba(255,255,255,.14); }
-.wt-btn.wt-primary {
-  background: rgba(0,212,255,.18);
-  border-color: rgba(0,212,255,.5);
-  color: #00d4ff;
+.wt-btn:active { transform: scale(0.97); }
+.wt-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.2);
 }
-.wt-btn.wt-primary:hover { background: rgba(0,212,255,.3); }
+.wt-btn.wt-primary {
+  background: linear-gradient(135deg, rgba(94, 184, 240, 0.35), rgba(125, 211, 252, 0.25));
+  border-color: rgba(125, 211, 252, 0.4);
+  color: #e0f4ff;
+  box-shadow: 0 2px 12px rgba(94, 184, 240, 0.2);
+}
+.wt-btn.wt-primary:hover {
+  background: linear-gradient(135deg, rgba(94, 184, 240, 0.5), rgba(125, 211, 252, 0.35));
+  box-shadow: 0 4px 16px rgba(94, 184, 240, 0.3);
+}
 
 /* checkbox */
 .wt-check-row {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin-top: 18px; font-size: clamp(.72rem, 2.2vw, .85rem); color: rgba(255,255,255,.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
 }
 .wt-check-row input[type="checkbox"] {
-  accent-color: #00d4ff;
-  width: 16px; height: 16px; cursor: pointer;
+  accent-color: #5eb8f0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  border-radius: 4px;
 }
-.wt-check-row label { cursor: pointer; }
+.wt-check-row label { cursor: pointer; user-select: none; }
 `;
 
 export class Walkthrough {
@@ -218,23 +296,31 @@ export class Walkthrough {
     const dots = STEPS.map((_, i) =>
       `<span class="wt-dot${i === this.step ? ' wt-active' : ''}"></span>`
     ).join('');
+    const progressPercent = ((this.step + 1) / STEPS.length) * 100;
 
     this.overlay.innerHTML = `
       <div class="wt-card">
-        <div class="wt-icon">${s.icon}</div>
-        <div class="wt-step-label">${s.title}</div>
-        <div class="wt-desc">${s.description}</div>
-        <div class="wt-dots">${dots}</div>
-        <div class="wt-actions">
-          ${!isFirst ? '<button class="wt-btn" data-wt="prev">◀ Geri</button>' : ''}
-          <button class="wt-btn" data-wt="skip">Atla</button>
-          ${isLast
-            ? '<button class="wt-btn wt-primary" data-wt="finish">Bitir ✓</button>'
-            : '<button class="wt-btn wt-primary" data-wt="next">İleri ▶</button>'}
-        </div>
-        <div class="wt-check-row">
-          <input type="checkbox" id="wt-no-show" ${this.dontShowAgain ? 'checked' : ''} />
-          <label for="wt-no-show">Bir daha gösterme</label>
+        <div class="wt-card-inner">
+          <div class="wt-icon-wrap">${s.icon}</div>
+          <div class="wt-step-label">${s.title}</div>
+          <div class="wt-desc">${s.description}</div>
+          <div class="wt-progress-wrap">
+            <div class="wt-progress-bar">
+              <div class="wt-progress-fill" style="width: ${progressPercent}%"></div>
+            </div>
+            <div class="wt-dots">${dots}</div>
+          </div>
+          <div class="wt-actions">
+            ${!isFirst ? '<button class="wt-btn" data-wt="prev">← Geri</button>' : ''}
+            <button class="wt-btn" data-wt="skip">Atla</button>
+            ${isLast
+              ? '<button class="wt-btn wt-primary" data-wt="finish">Başla</button>'
+              : '<button class="wt-btn wt-primary" data-wt="next">İleri →</button>'}
+          </div>
+          <div class="wt-check-row">
+            <input type="checkbox" id="wt-no-show" ${this.dontShowAgain ? 'checked' : ''} />
+            <label for="wt-no-show">Bir daha gösterme</label>
+          </div>
         </div>
       </div>`;
 
