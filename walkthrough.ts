@@ -16,7 +16,7 @@ interface Step {
 }
 
 const STEPS: Step[] = [
-  { icon: '👆', title: '1/3', description: 'Dokun: Top dönmeye başlar.' },
+  { icon: '⚽', title: '1/3', description: 'Dokun: Top dönmeye başlar.' },
   { icon: '✋', title: '2/3', description: 'Tekrar dokun: Top durur.' },
   { icon: '🏆', title: '3/3', description: 'Doğru anda durdur: Skor yap ve rekor kır!' },
 ];
@@ -205,6 +205,7 @@ const STYLE = /* css */ `
 
 export class Walkthrough {
   private overlay: HTMLDivElement | null = null;
+  private cardInner: HTMLDivElement | null = null;
   private step = 0;
   private gameRoot: HTMLElement | null = null;
   private gameRootSelector: string;
@@ -241,6 +242,7 @@ export class Walkthrough {
     setTimeout(() => {
       this.overlay?.remove();
       this.overlay = null;
+      this.cardInner = null;
     }, 300);
     this.lockGame(false);
     if (this.dontShowAgain) {
@@ -280,15 +282,20 @@ export class Walkthrough {
     this.overlay.addEventListener('click', (e) => {
       if (e.target === this.overlay) return; // ignore backdrop clicks
     });
+    const card = document.createElement('div');
+    card.className = 'wt-card';
+    this.cardInner = document.createElement('div');
+    this.cardInner.className = 'wt-card-inner';
+    card.appendChild(this.cardInner);
+    this.overlay.appendChild(card);
     document.body.appendChild(this.overlay);
-    // trigger reflow then add visible class for animation
     void this.overlay.offsetWidth;
     this.overlay.classList.add('wt-visible');
     this.render();
   }
 
   private render(): void {
-    if (!this.overlay) return;
+    if (!this.cardInner) return;
     const s = STEPS[this.step];
     const isFirst = this.step === 0;
     const isLast = this.step === STEPS.length - 1;
@@ -298,44 +305,39 @@ export class Walkthrough {
     ).join('');
     const progressPercent = ((this.step + 1) / STEPS.length) * 100;
 
-    this.overlay.innerHTML = `
-      <div class="wt-card">
-        <div class="wt-card-inner">
-          <div class="wt-icon-wrap">${s.icon}</div>
-          <div class="wt-step-label">${s.title}</div>
-          <div class="wt-desc">${s.description}</div>
-          <div class="wt-progress-wrap">
-            <div class="wt-progress-bar">
-              <div class="wt-progress-fill" style="width: ${progressPercent}%"></div>
-            </div>
-            <div class="wt-dots">${dots}</div>
-          </div>
-          <div class="wt-actions">
-            ${!isFirst ? '<button class="wt-btn" data-wt="prev">← Geri</button>' : ''}
-            <button class="wt-btn" data-wt="skip">Atla</button>
-            ${isLast
-              ? '<button class="wt-btn wt-primary" data-wt="finish">Başla</button>'
-              : '<button class="wt-btn wt-primary" data-wt="next">İleri →</button>'}
-          </div>
-          <div class="wt-check-row">
-            <input type="checkbox" id="wt-no-show" ${this.dontShowAgain ? 'checked' : ''} />
-            <label for="wt-no-show">Bir daha gösterme</label>
-          </div>
+    this.cardInner.innerHTML = `
+      <div class="wt-icon-wrap">${s.icon}</div>
+      <div class="wt-step-label">${s.title}</div>
+      <div class="wt-desc">${s.description}</div>
+      <div class="wt-progress-wrap">
+        <div class="wt-progress-bar">
+          <div class="wt-progress-fill" style="width: ${progressPercent}%"></div>
         </div>
+        <div class="wt-dots">${dots}</div>
+      </div>
+      <div class="wt-actions">
+        ${!isFirst ? '<button class="wt-btn" data-wt="prev">← Geri</button>' : ''}
+        <button class="wt-btn" data-wt="skip">Atla</button>
+        ${isLast
+          ? '<button class="wt-btn wt-primary" data-wt="finish">Başla</button>'
+          : '<button class="wt-btn wt-primary" data-wt="next">İleri →</button>'}
+      </div>
+      <div class="wt-check-row">
+        <input type="checkbox" id="wt-no-show" ${this.dontShowAgain ? 'checked' : ''} />
+        <label for="wt-no-show">Bir daha gösterme</label>
       </div>`;
 
-    // Bind actions
-    this.overlay.querySelector('[data-wt="prev"]')?.addEventListener('click', () => {
+    this.cardInner.querySelector('[data-wt="prev"]')?.addEventListener('click', () => {
       this.step--;
       this.render();
     });
-    this.overlay.querySelector('[data-wt="next"]')?.addEventListener('click', () => {
+    this.cardInner.querySelector('[data-wt="next"]')?.addEventListener('click', () => {
       this.step++;
       this.render();
     });
-    this.overlay.querySelector('[data-wt="skip"]')?.addEventListener('click', () => this.hide());
-    this.overlay.querySelector('[data-wt="finish"]')?.addEventListener('click', () => this.finish());
-    this.overlay.querySelector<HTMLInputElement>('#wt-no-show')?.addEventListener('change', (e) => {
+    this.cardInner.querySelector('[data-wt="skip"]')?.addEventListener('click', () => this.hide());
+    this.cardInner.querySelector('[data-wt="finish"]')?.addEventListener('click', () => this.finish());
+    this.cardInner.querySelector<HTMLInputElement>('#wt-no-show')?.addEventListener('change', (e) => {
       this.dontShowAgain = (e.target as HTMLInputElement).checked;
     });
   }
