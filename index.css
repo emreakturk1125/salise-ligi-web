@@ -3925,7 +3925,12 @@ body.lan-qr-scanner-active .playground > *:not(.qr-scan-overlay) {
   }
 
   .turn-time-hint__text {
-    display: none;
+    display: block;
+    font-size: clamp(0.6rem, 1.8vh, 0.75rem);
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .turn-time-hint__bar {
