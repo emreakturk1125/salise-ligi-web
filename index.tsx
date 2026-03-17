@@ -128,8 +128,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const playground = new Playground() as any; 
   rootElement.appendChild(playground as unknown as Node);
 
-  // Walkthrough: ilk açılışta 3 adımlı rehber göster
-  const walkthrough = new Walkthrough({ gameRootSelector: '#root' });
+  // Walkthrough: ilk açılışta 3 adımlı rehber göster (butonlarda click sesi)
+  const walkthrough = new Walkthrough({
+    gameRootSelector: '#root',
+    onButtonClick: () => SoundEngine.playButtonClick(),
+  });
   if (walkthrough.shouldShow()) walkthrough.show();
 
   let isMuted = false;

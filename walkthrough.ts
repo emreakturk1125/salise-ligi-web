@@ -7,6 +7,8 @@ const STORAGE_KEY = 'sl_walkthrough_done';
 
 interface WalkthroughOptions {
   gameRootSelector?: string;
+  /** Tüm buton tıklamalarında çalacak (click sesi vb.) */
+  onButtonClick?: () => void;
 }
 
 interface Step {
@@ -212,8 +214,11 @@ export class Walkthrough {
   private styleEl: HTMLStyleElement | null = null;
   private dontShowAgain = false;
 
+  private onButtonClick: (() => void) | undefined;
+
   constructor(opts?: WalkthroughOptions) {
     this.gameRootSelector = opts?.gameRootSelector ?? '#app';
+    this.onButtonClick = opts?.onButtonClick;
   }
 
   /** Check if walkthrough should be shown (first time only). */
@@ -327,16 +332,26 @@ export class Walkthrough {
         <label for="wt-no-show">Bir daha gösterme</label>
       </div>`;
 
+    const playClick = () => { this.onButtonClick?.(); };
+
     this.cardInner.querySelector('[data-wt="prev"]')?.addEventListener('click', () => {
+      playClick();
       this.step--;
       this.render();
     });
     this.cardInner.querySelector('[data-wt="next"]')?.addEventListener('click', () => {
+      playClick();
       this.step++;
       this.render();
     });
-    this.cardInner.querySelector('[data-wt="skip"]')?.addEventListener('click', () => this.hide());
-    this.cardInner.querySelector('[data-wt="finish"]')?.addEventListener('click', () => this.finish());
+    this.cardInner.querySelector('[data-wt="skip"]')?.addEventListener('click', () => {
+      playClick();
+      this.hide();
+    });
+    this.cardInner.querySelector('[data-wt="finish"]')?.addEventListener('click', () => {
+      playClick();
+      this.finish();
+    });
     this.cardInner.querySelector<HTMLInputElement>('#wt-no-show')?.addEventListener('change', (e) => {
       this.dontShowAgain = (e.target as HTMLInputElement).checked;
     });
