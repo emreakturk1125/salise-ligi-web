@@ -1317,11 +1317,6 @@ border-radius: 18px;
   box-shadow: 0 0 30px var(--neon-blue); /* Sabit, animasyon yok */
 }
 
-.language-flag {
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  line-height: 1;
-}
-
 .language-name {
   letter-spacing: 2px;
 }
@@ -1390,8 +1385,8 @@ border-radius: 18px;
 }
 
 .language-option {
-  justify-content: flex-start;
-  gap: 14px;
+  justify-content: center;
+  gap: 0;
   padding: 14px 16px;
   border-radius: 16px;
   background: rgba(8, 14, 20, 0.7);
@@ -1418,21 +1413,10 @@ border-radius: 18px;
   transform: scale(0.98);
 }
 
-.language-flag {
-  width: 42px;
-  height: 42px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  background: rgba(0, 212, 255, 0.12);
-  border: 1px solid rgba(0, 212, 255, 0.25);
-  box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.2);
-  font-size: 1.5rem;
-}
-
-.language-name {
+.language-modal-content .language-name {
   letter-spacing: 1.8px;
+  text-align: center;
+  width: 100%;
 }
 
 .save-button {
@@ -6139,8 +6123,7 @@ body.modal-open .welcome-subtitle {
     filter: none !important;
   }
 
-  .modal-card .digit-display,
-  .modal-card .language-flag {
+  .modal-card .digit-display {
     box-shadow: none !important;
   }
 }

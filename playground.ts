@@ -2030,9 +2030,9 @@ private async _hideBannerNow(token?: number) {
 
   private _startLiveDigitTicker() {
     if (this._liveDigitTickTimer != null) return;
+    const tickMs = 160;
     this._liveDigitTickTimer = window.setInterval(() => {
       if (!this.isPlaying) return;
-      const tickMs = 85;
       const d = Math.floor((Date.now() - this._spinStartTs) / tickMs) % 10;
       if (this.liveDigit !== d) this.liveDigit = d;
       const s = String(d);
@@ -2040,7 +2040,7 @@ private async _hideBannerNow(token?: number) {
         this.ballHudText = s;
       }
       this.requestUpdate();
-    }, 85);
+    }, tickMs);
   }
 
   private _stopLiveDigitTicker() {
@@ -6714,35 +6714,30 @@ private async _hideBannerNow(token?: number) {
               class="language-option btn btn--ghost btn--md ${this.language === 'tr' ? 'active' : ''}"
               @click=${() => _pickLang('tr')}
             >
-              <span class="language-flag">🇹🇷</span>
               <span class="language-name">Türkçe</span>
             </button>
             <button 
               class="language-option btn btn--ghost btn--md ${this.language === 'en' ? 'active' : ''}"
               @click=${() => _pickLang('en')}
             >
-              <span class="language-flag">🇬🇧</span>
               <span class="language-name">English</span>
             </button>
             <button 
               class="language-option btn btn--ghost btn--md ${this.language === 'de' ? 'active' : ''}"
               @click=${() => _pickLang('de')}
             >
-              <span class="language-flag">🇩🇪</span>
               <span class="language-name">Deutsch</span>
             </button>
             <button 
               class="language-option btn btn--ghost btn--md ${this.language === 'es' ? 'active' : ''}"
               @click=${() => _pickLang('es')}
             >
-              <span class="language-flag">🇪🇸</span>
               <span class="language-name">Español</span>
             </button>
             <button 
               class="language-option btn btn--ghost btn--md ${this.language === 'ar' ? 'active' : ''}"
               @click=${() => _pickLang('ar')}
             >
-              <span class="language-flag">🇸🇦</span>
               <span class="language-name">العربية</span>
             </button>
             </div>
